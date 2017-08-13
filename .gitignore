@@ -1,11 +1,1 @@
-/node_modules
-/.sass-cache
-/src/index.html
-/test
-/3th
-/.idea
-/.vscode
-
-/npm-debug.log
-/output
-/publish
+node_modules
