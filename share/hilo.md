@@ -165,9 +165,8 @@ usemathjax: yes
 ```
 ====
 dragonBones动画的载入
-<div>
- <img src="/media/8.png" height="400">
-</div>
+
+
 * 创建工厂类型对象
 * 解析外部数据，添加至工厂类对象中
 * 设置动画中的贴图
@@ -178,8 +177,140 @@ dragonBones动画的载入
 * 获取第一个动画进行播放
 * 在点击之后依次播放下面的动画
 
-`git subtree push --prefix=dist origin gh-pages`
+====
+<div>
+ <img src="/media/8.png" height="400">
+</div>
 [/magic]
+
+
+[slide data-transition="circle"]
+[magic data-transition="zoomout"]
+
+##demo
+
+
+https://zhangyuting1993.github.io/flapyy-bird/
+
+* webpack打包
+* 发布到远端github.io
+
+`git subtree push --prefix=dist origin gh-pages`
+
+====
+
+<div>
+ <img src="/media/game1.png" height="400">
+</div>
+
+====
+```html
+    load: function(){
+        var resources = [
+            {id:'bg', src:img2},
+            {id:'ground', src:img3},
+            {id:'ready', src:img4},
+            {id:'over', src:img5},
+            {id:'number', src:img6},
+            {id:'bird', src:img7},
+            {id:'holdback', src:img8}
+        ];
+
+        this.queue = new Hilo.LoadQueue();
+        this.queue.add(resources);
+        this.queue.on('complete', this.onComplete.bind(this));
+        this.queue.start();
+    },
+
+
+```
+
+====
+
+<div>
+ <img src="/media/game2.png" height="400">
+</div>
+
+====
+
+```html
+    initBackground: function(){
+        //背景
+        var bgWidth = this.width * this.scale;
+        var bgHeight = this.height * this.scale;
+        document.body.insertBefore(Hilo.createElement('div', {
+            id: 'bg',
+            style: {
+                background: 'url('+img1+') no-repeat',
+                backgroundSize: bgWidth + 'px, ' + bgHeight + 'px',
+                position: 'absolute',
+                width: bgWidth + 'px',
+                height: bgHeight + 'px'
+            }
+        }), this.stage.canvas);
+
+        //地面
+        this.ground = new Hilo.Bitmap({
+            id: 'ground',
+            image: this.asset.ground
+        }).addTo(this.stage);
+
+        //设置地面的y轴坐标
+        this.ground.y = this.height - this.ground.height;
+
+        //移动地面
+        Hilo.Tween.to(this.ground, {x:-60}, {duration:300, loop:true});
+    },
+
+```
+====
+
+```html
+    startMove: function(){
+        //设置缓动的x轴坐标
+        var targetX = -this.hoseWidth * this.numOffscreenHoses;
+        Hilo.Tween._tweens.push(this.moveTween);
+        //设置缓动时间
+        this.moveTween.duration = (this.x - targetX) * 4;
+        //设置缓动的变换属性，即x从当前坐标变换到targetX
+        this.moveTween.setProps({x:this.x}, {x:targetX});
+        //启动缓动动画
+        this.moveTween.start();
+    },
+
+
+
+```
+
+
+====
+
+<div>
+ <img src="/media/game2.png" height="400">
+</div>
+
+====
+
+```html
+       initCurrentScore: function(){
+        //当前分数
+        this.currentScore = new Hilo.BitmapText({
+            id: 'score',
+            glyphs: this.asset.numberGlyphs,
+            text: 0
+        }).addTo(this.stage);
+
+        //设置当前分数的位置
+        this.currentScore.x = this.width - this.currentScore.width >> 1;
+        this.currentScore.y = 180;
+    },
+
+```
+
+[/magic]
+
+
+
 
 
 
