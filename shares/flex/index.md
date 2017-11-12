@@ -72,7 +72,9 @@ usemathjax: yes
 ### 基本概念
 * flexbox 分为flex容器与flex项目
 * 布局基于flex-flow
-![](/img/1.png)
+
+<img src="/img/1.png" height="200">
+
 
 
 [slide data-transition="zoomin"]
@@ -106,6 +108,7 @@ usemathjax: yes
 ###flex-direction
 * 这是用来创建方轴，从而定义Flex项目在Flex容器中放置的方向。
 * 单方向的布局概念。Flex项目主要排列方式要么是水平排列，要么是垂直列排列。
+
 ```html
 flex-direction: row | row-reverse | column | column-reverse
 
@@ -145,6 +148,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 ====
 ###justify-content
 * 用于在主轴上对齐伸缩项目。
+
 ```html
 justify-content: flex-start | flex-end | center | space-between | space-around
 .flex-pack-center {
@@ -153,7 +157,8 @@ justify-content: flex-start | flex-end | center | space-between | space-around
     justify-content: center;
 }
 ```
-![](/img/2.png)
+
+<img src="/img/2.png" height="200">
 
 
 
@@ -161,6 +166,7 @@ justify-content: flex-start | flex-end | center | space-between | space-around
 ====
 ###align-items
 * 用于在侧轴上对齐伸缩项目。
+
 ```html
 align-items: flex-start | flex-end | center | baseline | stretch
 
@@ -171,7 +177,8 @@ align-items: flex-start | flex-end | center | baseline | stretch
 }
 ```
 https://codepen.io/zhangyuting1993/pen/MOmbLx
-![](/img/3.png)
+
+<img src="/img/3.png" height="200">
 
 
 
@@ -180,6 +187,7 @@ https://codepen.io/zhangyuting1993/pen/MOmbLx
 ====
 ###align-content
 * 调准伸缩行在伸缩容器里的对齐方式。
+
 ```html
 
 align-content: flex-start | flex-end | center | space-between | space-around | stretch
@@ -190,9 +198,9 @@ align-content: flex-start | flex-end | center | space-between | space-around | s
 }
 
 ```
-https://code
-pen.io/zhangyuting1993/pen/MOmbLx
-![](/img/4.png)
+https://codepen.io/zhangyuting1993/pen/MOmbLx
+
+<img src="/img/4.png" height="200">
 
 [/magic]
 
