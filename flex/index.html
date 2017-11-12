@@ -1,0 +1,424 @@
+<!--
+    Powered By nodeppt - This is probably the best web presentation tool so far!
+    version: 1.4.5
+    site: https://github.com/ksky521/nodeppt
+    date: 
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>flex全方位解读 - By 张宇亭</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.moon.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"   data-on-build="Slide.magic" data-on-enter="Slide.magic.init"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>flex全方位解读</h1>
+
+</article></section></slide>
+<slide class="slide" data-transition="vertical3d"  data-on-build="Slide.magic" data-on-enter="Slide.magic.init"><section class="slide-wrapper"><div class="magic"><div class="magicItem current pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<hgroup>
+<h3>传统布局</h3>
+
+</hgroup><article>
+
+<ul>
+<li>基于盒状模型</li>
+<li>依赖 display属性 + position属性 + float属性。</li>
+<li>未知情况不好判断:垂直居中</li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem next pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<pre><code class="css">//已知高度
+    .parent {
+        position: relative;
+    }
+
+    .child {
+        position: absolute;
+        top: 50 %;
+        height: 100 px;
+        margin-top: -50px;
+    }
+</code></pre>
+<pre><code class="css">//未知高度
+    .parent {
+        position: relative;
+    }
+
+    .child {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+</code></pre>
+<p>    <a href="https://codepen.io/zhangyuting1993/pen/BmRQop" target="_blank">https://codepen.io/zhangyuting1993/pen/BmRQop</a></p>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem far-next pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<hgroup>
+<h3>flex</h3>
+
+</hgroup><article>
+
+<ul>
+<li>更佳有效的布局方式</li>
+<li>更好的控制项目的对齐和自由分配容器空间，即使它们的大小是未知的或动态的。</li>
+</ul>
+<pre><code class="css">.parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+</code></pre>
+
+</article>
+</div>
+</article></div></div></section></slide>
+<slide class="slide" data-transition="zoomin"><section class="slide-wrapper"><article>
+<h3>基本概念</h3>
+<ul>
+<li>flexbox 分为flex容器与flex项目</li>
+<li>布局基于flex-flow
+<img src="./img/1.png" alt=""></li>
+</ul>
+
+</article></section></slide>
+<slide class="slide" data-transition="zoomin"  data-on-build="Slide.magic" data-on-enter="Slide.magic.init"><section class="slide-wrapper"><div class="magic"><div class="magicItem current pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex容器属性</h3>
+<ul>
+<li>display</li>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem next pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>display</h3>
+<pre><code class="html">.flex-layout {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+</code></pre>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem far-next pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex-direction</h3>
+<ul>
+<li>这是用来创建方轴，从而定义Flex项目在Flex容器中放置的方向。</li>
+<li>单方向的布局概念。Flex项目主要排列方式要么是水平排列，要么是垂直列排列。
+```html
+flex-direction: row | row-reverse | column | column-reverse</li>
+</ul>
+<p>.flex-v-direaction{
+    -webkit-box-orient: vertical/horizontal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+```
+<a href="https://codepen.io/zhangyuting1993/pen/xPqVwv" target="_blank">https://codepen.io/zhangyuting1993/pen/xPqVwv</a></p>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem "  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex-wrap</h3>
+<ul>
+<li>默认情况之下，Flex项目都尽可能在一行显示。</li>
+<li>你可以根据flex-wrap的属性值来改变，让Flex项目多行显示。<pre><code class="html">flex-wrap: nowrap | wrap | wrap-reverse
+.flex-wrap{
+  -webkit-box-lines: single/multiple;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+</code></pre>
+<a href="https://codepen.io/zhangyuting1993/pen/WXjodM?editors=1100" target="_blank">https://codepen.io/zhangyuting1993/pen/WXjodM?editors=1100</a></li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem "  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex-flow</h3>
+<ul>
+<li>这是flex-direction和flex-wrap两个属性的缩写。两个属性决定了伸缩容器的主轴与侧轴。</li>
+<li>默认值是row nowrap（中间用空格隔开）<pre><code class="html">flex-flow: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;
+</code></pre>
+</li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem "  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>justify-content</h3>
+<ul>
+<li>用于在主轴上对齐伸缩项目。<pre><code class="html">justify-content: flex-start | flex-end | center | space-between | space-around
+.flex-pack-center {
+  -webkit-box-pack: start/end/center/justify;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+</code></pre>
+<img src="./img/2.png" alt=""></li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem "  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>align-items</h3>
+<ul>
+<li>用于在侧轴上对齐伸缩项目。
+```html
+align-items: flex-start | flex-end | center | baseline | stretch</li>
+</ul>
+<p>.flex-align-center {
+    -webkit-box-align: start/end/center/baseline/stretch;
+    -webkit-align-items: center;
+    align-items: center;
+}
+```
+<a href="https://codepen.io/zhangyuting1993/pen/MOmbLx" target="_blank">https://codepen.io/zhangyuting1993/pen/MOmbLx</a>
+<img src="./img/3.png" alt=""></p>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem "  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>align-content</h3>
+<ul>
+<li>调准伸缩行在伸缩容器里的对齐方式。
+```html</li>
+</ul>
+<p>align-content: flex-start | flex-end | center | space-between | space-around | stretch</p>
+<p>.flex-align-content {
+    -webkit-align-content: center;
+    align-content: center;
+}</p>
+<p>```
+<a href="https://code" target="_blank">https://code</a>
+pen.io/zhangyuting1993/pen/MOmbLx
+<img src="./img/4.png" alt=""></p>
+
+</article>
+</div>
+</article></div></div></section></slide>
+<slide class="slide" data-transition="zoomin"  data-on-build="Slide.magic" data-on-enter="Slide.magic.init"><section class="slide-wrapper"><div class="magic"><div class="magicItem current pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex项目属性</h3>
+<ul>
+<li>order</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex</li>
+<li>align-self</li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem next pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>order</h3>
+<ul>
+<li>控制Flex项目的顺序源<pre><code class="html">flex-order:1
+order:1
+</code></pre>
+<a href="https://codepen.io/zhangyuting1993/pen/POmWPR" target="_blank">https://codepen.io/zhangyuting1993/pen/POmWPR</a></li>
+</ul>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem far-next pagedown"  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex-grow</h3>
+<ul>
+<li>定义一个Flex项目的扩大比例</li>
+</ul>
+<p><a href="https://codepen.io/zhangyuting1993/pen/bYWgEx" target="_blank">https://codepen.io/zhangyuting1993/pen/bYWgEx</a></p>
+
+</article>
+</div>
+</article></div>
+<div class="magicItem "  data-transition="move"><article>
+<div class="magic-wrapper">
+<article>
+<h3>flex-shrink</h3>
+<ul>
+<li>定义一个Flex项目的缩小比例
+<a href="https://codepen.io/zhangyuting1993/pen/POmWNR?editors=1100" target="_blank">https://codepen.io/zhangyuting1993/pen/POmWNR?editors=1100</a></li>
+</ul>
+<h3>flex-basis</h3>
+<ul>
+<li>定义了Flex项目在分配Flex容器剩余空间之前的一个默认尺寸.</li>
+<li>。如果设置为auto，额外空间会基于flex-grow值做分布。
+<a href="https://codepen.io/zhangyuting1993/pen/KymaMY" target="_blank">https://codepen.io/zhangyuting1993/pen/KymaMY</a></li>
+</ul>
+<h3>flex</h3>
+<ul>
+<li>flex是flex-grow，flex-shrink和flex-basis三个属性的缩写</li>
+<li>flex-shrink和flex-basis可选</li>
+<li>默认为 0 1 auto</li>
+<li>flex取值为none时，其相当于取值为0 0 auto。</li>
+</ul>
+<pre><code class="html">-webkit-box-flex: 1;
+-webkit-flex: 1;
+flex: 1;
+</code></pre>
+<p><a href="https://codepen.io/zhangyuting1993/pen/LOyxxW" target="_blank">https://codepen.io/zhangyuting1993/pen/LOyxxW</a></p>
+<ul>
+<li>flex: 0 auto,flex: initial与flex: 0 1 auto</li>
+<li>flex: none与flex: 0 0 auto</li>
+<li>伸缩项目不会收缩至比其最小内容尺寸</li>
+</ul>
+<h3>align-self</h3>
+<ul>
+<li>align-self则用来在单独的伸缩项目上覆写默认的对齐方式。</li>
+</ul>
+<pre><code class="html">align-self: auto | flex-start | flex-end | center | baseline | stretch
+
+-webkit-align-self: center;
+align-self:center;
+</code></pre>
+<p><a href="https://codepen.io/zhangyuting1993/pen/OOmWxo" target="_blank">https://codepen.io/zhangyuting1993/pen/OOmWxo</a></p>
+
+</article>
+</div>
+</article></div></div></section></slide>
+<slide class="slide" data-transition="zoomin"><section class="slide-wrapper"><article>
+<h3>应用举例</h3>
+<p><a href="https://codepen.io/zhangyuting1993/pen/eeWgMJ" target="_blank">https://codepen.io/zhangyuting1993/pen/eeWgMJ</a></p>
+
+</article></section></slide>
+        
+
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodeppt v1.4.5</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+    var ASSET_RELATIVE_DIR = ".";
+</script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+if (typeof ASSET_RELATIVE_DIR === 'string') {
+    path = path + '/' + ASSET_RELATIVE_DIR;
+}
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'slide3',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  config: ["TeX-AMS-MML_HTMLorMML.js"],
+  tex2jax: {inlineMath: [['\\(','\\)']]}});
+  //['$','$'], 避免货币价格冲突
+</script>
+<script type="text/javascript" src="./js/mathjax/MathJax.js"></script>
+
+<!--placeholder-->
+</body>
+</html>
